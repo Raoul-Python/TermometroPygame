@@ -1,4 +1,4 @@
-import pygame
+import pygame, sys
 from pygame.locals import *
 
 class Termometro:
@@ -138,8 +138,8 @@ class mainApp:
     termometro = None
 
     def __init__(self):
-        self.__screen = pygame.display.set_mode((390, 415))#Dimensiones de mi termóemtro
-        pygame.display.set_caption("TERMÓMETRO CASERO")
+        self.__screen = pygame.display.set_mode((290, 415))#Dimensiones de mi termóemtro
+        pygame.display.set_caption("TERMÓMETRO pY")
         self.__screen.fill((244, 236, 203))#El fondo de pantalla es un color
 
         self.termometro = Termometro() #Esta variable del Constructor me almacena el objeto
@@ -162,8 +162,15 @@ class mainApp:
                     self.__on_close()
 
 
-            #Me dibuja el termómetro
+            #Me dibuja el termómetro en su posición
             self.__screen.blit(self.termometro.disfraz, (50,34))
+
+            #Pintamos el cuadro de texto
+            texto = self.entrada.render()
+
+            pygame.draw.rect(self.__screen, (255, 255, 255), texto[0]) #texto[0] es return (rectangulo, textBlock) de la función render
+                                                                        #creamos el rectángulo blanco en su posición y tamaño
+            self.__screen.blit(texto[1], self.entrada.posicionTotal())#Pintamos foto del texto
 
             #Pintamos el programa, lo renderizamos
             pygame.display.flip()
@@ -173,7 +180,7 @@ class mainApp:
     def __on_close(self):
         
         pygame.quit()
-        sys.quit()
+        sys.exit()
 
 
 
@@ -181,7 +188,7 @@ class mainApp:
 
 if __name__ == "__main__":
 
-    pygame.font.init
+    pygame.init()
 
     app = mainApp() # Creo un objeto de la clase mainApp
 
