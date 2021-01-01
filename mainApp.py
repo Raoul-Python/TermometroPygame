@@ -7,7 +7,31 @@ class Termometro:
 
         self.disfraz = pygame.image.load("D:/imagenes/termometro/termo1.png")#Variable que contiene el disfraz
         #La variable self.disfraz sólo me sirve para fijar la imagen del termómetro en la pantalla
-        
+
+
+class Entrada:
+
+    __value = 0
+    __strValue = "0"
+    __posicion = (0,0)
+    __tamagno = (0,0)
+
+
+    #Creamos la fuente a usar en el cuadro de texto con su tamaño. Todo ello en el constructor
+    def __init__(self, value = 0):
+
+        self.__font = pygame.font.SysFont("Terminal", 24)
+
+        #Creamos el cuadro de texto....: Este textBlock sólo puede recoger y contener texto
+        textBlock = self.__font.render(self.__strValue, True, (74, 74, 74))
+
+        rectangulo = textBlock.get_rect() #Nos da un rectángulo gráfico
+        rectangulo.left = self.__posicion[0] # Coordenada de la X
+        rectangulo.top = self.__posicion[1] #Coordenada de la Y
+        rectangulo.size =  self.__tamagno
+
+
+
 
 
 
@@ -19,7 +43,7 @@ class mainApp:
     termometro = None
 
     def __init__(self):
-        self.__screen = pygame.display.set_mode((290, 415))#Dimensiones de mi termóemtro
+        self.__screen = pygame.display.set_mode((390, 415))#Dimensiones de mi termóemtro
         pygame.display.set_caption("TERMÓMETRO CASERO")
         self.__screen.fill((244, 236, 203))#El fondo de pantalla es un color
 
