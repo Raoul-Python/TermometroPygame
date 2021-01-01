@@ -13,8 +13,8 @@ class Entrada:
 
     __value = 0
     __strValue = "0"
-    __posicion = (0,0)
-    __tamagno = (0,0)
+    __posicion = [0,0]
+    __tamagno = [0,0]
 
 
     #Creamos la fuente a usar en el cuadro de texto con su tamaño. Todo ello en el constructor
@@ -31,9 +31,87 @@ class Entrada:
         rectangulo.size =  self.__tamagno
 
 
+    def value(self, value = None): #Función getter y setter con excepción
+        if value == None:
+            return self.__value
+        else:
+            val = str(value)
+
+            try:
+                self.__value = int(val)
+                self.__strValue = val
+
+            except:
+                pass
+
+    def anchoCuadro(self, val = None): 
+        if val == None:
+            return self.__tamagno[0]
+
+        else:
+
+            try:
+                self.__tamagno[0] = int(val)
+
+            except:
+                pass
 
 
+    def altoCuadro(self, val = None):
+            if val == None:
+                return self.__tamagno[1]
 
+            else:
+
+                try:
+                    self.__tamagno[1] = int(val)
+
+                except:
+                    pass
+
+
+    def size(self, val = None):
+        if val == None:
+            return self.__tamagno
+        else:
+            try:
+                h = int(val[1])
+                w = int(val[0])
+                self.__tamagno = [int(val[0]), int(val[1])]
+
+            except:
+
+                pass
+
+
+    def posX(self, val = None):
+        if val == None:
+            return self.__posicion[0]
+        else:
+            try:
+                self.__posicion[0] = int(val)
+            except:
+                pass
+    
+     def posY(self, val = None):
+        if val == None:
+            return self.__posicion[1]
+        else:
+            try:
+                self.__posicion[1] = int(val)
+            except:
+                pass
+
+
+    def posicionTotal(self, val = None):
+        if val == None:
+            return self.__posicion
+        else:
+            try:
+                self.__posicion = [int(val[0], int(val[1])]
+
+            except:
+                pass
 
 
 class mainApp:
@@ -49,6 +127,8 @@ class mainApp:
 
         self.termometro = Termometro() #Esta variable del Constructor me almacena el objeto
                                         #de clase Termómetro. Solo pinta el termómetro
+
+        self.entrada = Entrada()
 
     #Arrancamos el programa
     def start(self):
