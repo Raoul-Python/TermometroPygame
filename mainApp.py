@@ -20,15 +20,9 @@ class Entrada:
     #Creamos la fuente a usar en el cuadro de texto con su tamaño. Todo ello en el constructor
     def __init__(self, value = 0):
 
-        self.__font = pygame.font.SysFont("Terminal", 24)
+        self.__font = pygame.font.SysFont('Arial', 24)
 
-        #Creamos el cuadro de texto....: Este textBlock sólo puede recoger y contener texto
-        textBlock = self.__font.render(self.__strValue, True, (74, 74, 74))
-
-        rectangulo = textBlock.get_rect() #Nos da un rectángulo gráfico
-        rectangulo.left = self.__posicion[0] # Coordenada de la X
-        rectangulo.top = self.__posicion[1] #Coordenada de la Y
-        rectangulo.size =  self.__tamagno
+       
 
 
     def value(self, value = None): #Función getter y setter con excepción
@@ -93,7 +87,7 @@ class Entrada:
             except:
                 pass
     
-     def posY(self, val = None):
+    def posY(self, val = None):
         if val == None:
             return self.__posicion[1]
         else:
@@ -108,10 +102,33 @@ class Entrada:
             return self.__posicion
         else:
             try:
-                self.__posicion = [int(val[0], int(val[1])]
+                self.__posicion = [int(val[0]), int(val[1])]
 
             except:
                 pass
+
+    def render(self):
+
+         #Creamos el cuadro de texto....: Este textBlock sólo puede recoger y contener texto
+        textBlock = self.__font.render(self.__strValue, True, (74, 74, 74))
+
+        rectangulo = textBlock.get_rect() #Nos da un rectángulo gráfico
+        rectangulo.left = self.__posicion[0] # Coordenada de la X
+        rectangulo.top = self.__posicion[1] #Coordenada de la Y
+        rectangulo.size =  self.__tamagno
+
+        #Voy a devolver textBlock y rectángulo. Puedo hacerlo de 2 formas.. como un diccionario o una tupla
+
+        """ 
+        return{
+            "fondo" : rectangulo,
+            "texto" : textBlock
+        }
+        """
+        return (rectangulo, textBlock)
+
+
+
 
 
 class mainApp:
@@ -129,6 +146,12 @@ class mainApp:
                                         #de clase Termómetro. Solo pinta el termómetro
 
         self.entrada = Entrada()
+
+        self.entrada.posicionTotal([106, 58])
+
+        self.entrada.size([133, 28])
+
+
 
     #Arrancamos el programa
     def start(self):
@@ -158,7 +181,7 @@ class mainApp:
 
 if __name__ == "__main__":
 
-    pygame.init
+    pygame.font.init
 
     app = mainApp() # Creo un objeto de la clase mainApp
 
