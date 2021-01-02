@@ -27,9 +27,10 @@ class Entrada:
     def on_event(self, event):
 
         if event.type == KEYDOWN:
-            if event.unicode in "0123456789": #event.unicode es la tecla que hemos pulsado
+            if event.unicode.isdigit() and len(self.__strValue) < 10: #event.unicode es la tecla que hemos pulsado
 
-            if event.isdigit:
+                self.__strValue += event.unicode
+
                 
 
 
@@ -179,6 +180,9 @@ class mainApp:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.__on_close()
+
+                    self.entrada.on_event(event)
+
 
                 
 
