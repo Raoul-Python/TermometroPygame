@@ -22,6 +22,25 @@ class Entrada:
 
         self.__font = pygame.font.SysFont('Arial', 24)
 
+        self.value(value)
+
+    def on_event(self, event):
+
+        if event.type == KEYDOWN:
+            if event.unicode in "0123456789": #event.unicode es la tecla que hemos pulsado
+
+            if event.isdigit:
+                
+
+
+        """
+        try:
+            self.__value = int(value)
+            self.__strValue = str(value)
+        except:
+            pass"""
+        
+
        
 
 
@@ -161,6 +180,7 @@ class mainApp:
                 if event.type == pygame.QUIT:
                     self.__on_close()
 
+                
 
             #Me dibuja el termómetro en su posición
             self.__screen.blit(self.termometro.disfraz, (50,34))
