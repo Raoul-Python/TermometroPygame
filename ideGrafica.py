@@ -15,6 +15,7 @@ class mainApp(Tk): #la clase mainApp hereda de la clase "padre" Tk()
         self.geometry(self.size)
         self.title("TERMÓMETRO")
         self.configure(bg = "#DED7B9")
+        self.resizable(0,0)
 
         self.temperatura = StringVar(value="")
         self.tipoUnidad = StringVar(value="C")
@@ -23,8 +24,20 @@ class mainApp(Tk): #la clase mainApp hereda de la clase "padre" Tk()
 
     
     def createLayout(self):
+        #Cuadro de texto
+        self.entrada = ttk.Entry(self, textvariable = self.temperatura).place(x=10, y=10)
 
-        self.entrada = Entry(self, variable = self.temperatura)
+        #Etiqueta...:
+        self.lbUnidad = ttk.Label(self, text="Grados....: ").place(x=10, y=45)
+
+        self.rb1 = ttk.Radiobutton(self, text = "Farenheit", variable= self.tipoUnidad, value = "F").place(x =20, y=75)
+        self.rb2 = ttk.Radiobutton(self, text= "Centígrados", variable = self.tipoUnidad, value = "C").place(x =20, y=110)
+
+
+
+
+
+
        
 
 
