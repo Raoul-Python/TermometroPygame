@@ -18,6 +18,8 @@ class mainApp(Tk): #la clase mainApp hereda de la clase "padre" Tk()
         self.resizable(0,0)
 
         self.temperatura = StringVar(value="")
+        self.temperatura.trace("w", self.validateTemperature)
+
         self.tipoUnidad = StringVar(value="C")
 
         self.createLayout()
@@ -41,7 +43,8 @@ class mainApp(Tk): #la clase mainApp hereda de la clase "padre" Tk()
        
 
 
-
+    def validateTemperature(self, *args):
+        print(self.temperatura.get())
 
 
     def start(self):
