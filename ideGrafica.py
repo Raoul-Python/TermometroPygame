@@ -9,6 +9,9 @@ class mainApp(Tk): #la clase mainApp hereda de la clase "padre" Tk()
     entrada = None
     tipoUnidad = None
 
+    __temperaturaAnterior = ""
+
+
     def __init__(self):
         Tk.__init__(self)#Llama al constructor de Tk()
 
@@ -44,7 +47,17 @@ class mainApp(Tk): #la clase mainApp hereda de la clase "padre" Tk()
 
 
     def validateTemperature(self, *args):
-        print(self.temperatura.get())
+
+        nuevoValor = self.temperatura.get()
+
+        #print(self.temperatura.get())
+
+        try:
+
+            float(nuevoValor)
+            self.__temperaturaAnterior = nuevoValor
+        except:
+            self.temperatura.set(self.__temperaturaAnterior)
 
 
     def start(self):
