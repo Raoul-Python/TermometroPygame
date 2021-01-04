@@ -49,6 +49,7 @@ class mainApp(Tk): #la clase mainApp hereda de la clase "padre" Tk()
     def validateTemperature(self, *args):
 
         nuevoValor = self.temperatura.get()
+        print("Nuevo valor ",nuevoValor, "vs valor anterior", self.__temperaturaAnterior)
 
         #print(self.temperatura.get())
 
@@ -56,9 +57,10 @@ class mainApp(Tk): #la clase mainApp hereda de la clase "padre" Tk()
 
             float(nuevoValor)
             self.__temperaturaAnterior = nuevoValor
+            print("Fijaa valor anterior a...:", self.__temperaturaAnterior)
         except:
             self.temperatura.set(self.__temperaturaAnterior)
-
+            print("Recupera valor anterior...:", self.__temperaturaAnterior)
 
     def start(self):
         self.mainloop()
